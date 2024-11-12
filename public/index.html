@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script src="varios.js" defer></script>
+    <title>Ejemplo2</title>
+</head>
+<body>
+    
+    <div class="container">
+        <h1> MI PRESENTACIÓN </h1>
+        <form id="presentacion" onclick="iniciarFormulario()" >
+            <div>
+                <label for="nombre">Mi nombre es:</label>
+                <input type="text" id="nombre" name="nombre" required>
+            </div>
+            <div>
+                <label for="apellido">Mi apellido es:</label>
+                <input type="text" id="apellido" name="apellido" required>
+            </div>
+            <div>
+                <label for="edad">Mi edad es:</label>
+                <input type="number" id="edad" name="edad" min="18" max="99" required>
+            </div>
+            <div>
+                <label for="color">Mi color favorito es:</label>
+                <input type="color" id="color" name="color">
+            </div>
+            <div>
+                <label for="fechaNac">Mi fecha de nacimiento es:</label>
+                <input type="date" id="fechaNac" name="fechaNac">
+            </div>
+            <div>
+                <label for="terminos">Acepto los terminos y condiciones </label>
+                <input type="checkbox" id="terminos" name="terminos" >
+            </div>
+            <button onclick="window.location.href = 'nuevo.html'" type="submit"> Enviar </button>
+
+        </form>
+    </div>
+    
+</body>
+</html>
