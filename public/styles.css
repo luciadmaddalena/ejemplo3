@@ -55,6 +55,47 @@ button:hover {
     background-color: darkolivegreen;
 }
 
+/* Estilos para el Modal */
+.modal {
+    display: none; /* Inicialmente oculto */
+    position: fixed;
+    z-index: 1; /* Está en la parte superior de la página */
+    left: 0;
+    top: 0;
+    width: 100%; /* Ancho completo */
+    height: 100%; /* Alto completo */
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+}
+
+/* Contenido del Modal */
+.modal-content {
+    background-color: white;
+    margin: 10% auto; /* Centrado vertical */
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px; /* Ancho fijo */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Botón de cierre */
+.cerrar {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    cursor: pointer;
+}
+
+.cerrar:hover,
+.cerrar:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
 /*.checkbox {
     display:inline-flex;
     align-items:center;
