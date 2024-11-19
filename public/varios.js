@@ -8,6 +8,7 @@ function iniciarFormulario(){
 function enviarDatos(event){
     event.preventDefault();
 
+//obtener los valores de formulario
     const nombre = document.getElementById('nombre').value;
     const apellido = document.getElementById('apellido').value;
     const edad = document.getElementById('edad')
@@ -16,8 +17,10 @@ function enviarDatos(event){
     const terminos = document.getElementById('terminos').value;
 
 
-const data = {nombre, apellido, edad, color, fechaNac, terminos}
-console.log(data)
+//crea un objeto con los datos
+const data = {nombre, apellido, edad, color, fechaNac, terminos};
+console.log(data);
+
 /*
 console.log('Datos enviados correctamente')
 alert('Tu presentacion fue cargada correctamente: ')
@@ -33,9 +36,9 @@ function submit(){
 fetch('/presentacion', {
     method: 'POST',
     headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json', //asegura que es JSON
     },
-    body: JSON.stringify(data)
+    body: JSON.stringify(data), //Convertir el objeto en una cadeja JSON
 })
 .then(response => {
     if(!response.ok) {
@@ -44,9 +47,9 @@ fetch('/presentacion', {
     return response.text();
 })
 .then(data => {
-    window.location.href = '/nuevo'
+    window.location.href = '/nuevo';
 })
-.catch(() => {
+.catch(error => {
     mostrarErrorModal(error.message);
 });
 }

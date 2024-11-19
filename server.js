@@ -3,14 +3,17 @@ const path = require('path');
 const app = express ();
 const port = 3000;
 
+app.use(express.json());
+
 // Servir archivos estáticos desde la carpeta 'public'
 app.use(express.static(path.join(__dirname, 'public')));
 
-
+/*
 //ruta de ejemplo
 app.get('/', (req,res) => {
     res.send('Hola Mundo desde Express');
 });
+*/
 
 //ruta para servir el archivo logueo.html
 app.get('/inicio', (req,res) => {
@@ -26,7 +29,7 @@ app.post('/presentacion', (req, res) => {
 if (nombre === 'lucia') {
     res.json({ message: '¡Bienvenido!' });
 } else {
-    res.status(401).json({ message: 'Credenciales incorrectas'})
+    res.status(401).json({ message: 'Credenciales incorrectas'});
 }
 }); 
 
