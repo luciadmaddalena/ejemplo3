@@ -32,18 +32,18 @@ if (nombre.trim() === "") {
 }
 
 if (!isNaN(nombre)) {
-    res.status(401).json({ message: 'campo nombre es un numero.'});
+    res.status(401).json({ message: 'campo nombre no debe tener numeros.' });
 }
 
 if (edad >= 18 ){
     res.json({ message: '¡Bienvenido!' });
 } else{
-    res.status(401).json({ message: 'Debes ser mayor de 18 años.'});
+    res.status(401).json({ message: 'Debes ser mayor de 18 años.' });
 }
 });
 
 
-app.get('/bienvenido', (req, res) => {
+app.get('/nuevo', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'nuevo.html'));
 });
 
