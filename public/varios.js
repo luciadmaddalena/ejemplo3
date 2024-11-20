@@ -47,7 +47,7 @@ fetch('/presentacion', {
     return response.text();
 })
 .then(data => {
-    window.location.href = '/nuevo';
+    window.location.href = 'nuevo.html';
 })
 .catch(error => {
     mostrarErrorModal(error.message);
@@ -66,6 +66,11 @@ function mostrarErrorModal(mensaje) {
 function cerrarModal() {
     const modal = document.getElementById('miModal');
     modal.style.display = 'none'; //ocultar el modal
+}
+
+function redirigir(event) {
+    event.preventDefault();
+    window.location.href = "nuevo.html"; 
 }
 
 function volver(){

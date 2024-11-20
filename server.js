@@ -25,16 +25,26 @@ app.get('/inicio', (req,res) => {
 app.post('/presentacion', (req, res) => {
     const { nombre, apellido, edad, color, fechaNac, terminos } = req.body;
 
+
 //aca vamos a agregar una llamada a la BD
-if (nombre === 'lucia') {
-    res.json({ message: '¡Bienvenido!' });
-} else {
-    res.status(401).json({ message: 'Credenciales incorrectas'});
+if (nombre.trim() === "") {
+    res.status(401).json({ message: 'campo nombre esta vacio.' });
 }
-}); 
+
+if (!isNaN(nombre)) {
+    res.status(401).json({ message: 'campo nombre es un numero.'});
+}
+
+if (edad >= 18 ){
+    res.json({ message: '¡Bienvenido!' });
+} else{
+    res.status(401).json({ message: 'Debes ser mayor de 18 años.'});
+}
+});
+
 
 app.get('/bienvenido', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.sendFile(path.join(__dirname, 'public', 'nuevo.html'));
 });
 
 //iniciar el servidor
