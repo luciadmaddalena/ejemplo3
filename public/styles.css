@@ -1,7 +1,27 @@
 body {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    background-color: #EAEDED;
-    color: #444;
+    font-family: courier new;
+    background-color: #04010c;
+    background-image: url(fondo3.jpg);
+    background-position: right;
+    background-size: 500px ;
+    background-repeat: no-repeat;
+    color: #f4f6f7;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#bodyNuevo {
+    font-family: courier new;
+    background-color: #23174b;
+    background-image: url(fondo2.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: #f4f6f7;
     margin: 0;
     padding: 0;
     display: flex;
@@ -11,14 +31,16 @@ body {
 }
 
 h1{
-    color: #808000;
+    color: #e66dfb;
+    font-weight: bold;
+    text-shadow: 3px 2px 2px #1afef1;
     padding: 10px;
     margin-bottom: 0;
     text-align: center;
     letter-spacing: 5px;
 }
 .container {
-    background-color: #ddd;
+    background-color: #381658;
     padding: 20px;
     border-radius: 10px;
     width: 700px;
@@ -34,15 +56,17 @@ label{
 }
 
 input{
+    color: #ddd;
     width: 80%;
     padding: 10px;
     margin-bottom: 20px;
-    border: 1px solid #DDD;
+    background-color: #381e4f;
+    border: 1px solid #535155;
     border-radius: 4px;
 }
 
 button{
-    background-color: #808000;
+    background-color: #352044;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -52,7 +76,7 @@ button{
 }
 
 button:hover {
-    background-color: darkolivegreen;
+    background-color: #b0a3bd;
 }
 
 /* Estilos para el Modal */
@@ -69,7 +93,8 @@ button:hover {
 
 /* Contenido del Modal */
 .modal-content {
-    background-color: white;
+    color: #ad91b2;
+    background-color: rgba(0, 0, 0, 1);
     margin: 10% auto; /* Centrado vertical */
     padding: 20px;
     border-radius: 8px;
