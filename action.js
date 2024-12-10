@@ -4,7 +4,7 @@ const path = require('path');
 // Ruta completa a la base de datos SQLite
 const dbPath = 'C:\\desarrollo\\ejemplo3\\BD\\presentacion_db';  // Ruta absoluta a la base de datos SQLite
 
-function verificarCredenciales(nombre, apellido, edad, color, fechaNac) {
+function ingresarPresentacion (nombre, apellido, edad, color, fechaNac) {
     return new Promise((resolve, reject) => {
         // Conectar a la base de datos SQLite
         const db = new sqlite3.Database(dbPath, (err) => {
@@ -13,7 +13,8 @@ function verificarCredenciales(nombre, apellido, edad, color, fechaNac) {
             }
         });
 
-        db.get('SELECT * FROM usuarios WHERE email = ? AND password = ?', [nombre, apellido, edad, color, fechaNac], (err, row) => {
+        //
+            db.get('INSERT INTO presentacion (nombre, apellido, edad, color, fechaNac)', (err, row) => {
             if (err) {
                 db.close();
                 return reject('Error al consultar la base de datos: ' + err.message);
@@ -31,4 +32,4 @@ function verificarCredenciales(nombre, apellido, edad, color, fechaNac) {
     });
 }
 
-module.exports = { verificarCredenciales };
+module.exports = { ingresarPresentacion };

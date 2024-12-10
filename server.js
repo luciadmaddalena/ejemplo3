@@ -3,6 +3,9 @@ const path = require('path');
 const app = express ();
 const port = 3000;
 
+const { ingresarPresentacion } = require('./action');
+
+
 app.use(express.json());
 
 // Servir archivos estáticos desde la carpeta 'public'
@@ -26,21 +29,21 @@ app.post('/presentacion', (req, res) => {
     const { nombre, apellido, edad, color, fechaNac, terminos } = req.body;
 
 
-//aca vamos a agregar una llamada a la BD
-if (nombre.trim() === "") {
-    res.status(401).json({ message: 'campo nombre esta vacio.' });
-}
+    //aca vamos a agregar una llamada a la BD
+    if (nombre.trim() === "") {
+        res.status(401).json({ message: 'campo nombre esta vacio.' });
+    }
 
-if (!isNaN(nombre)) {
-    res.status(401).json({ message: 'campo nombre no debe tener numeros.' });
-}
+    if (!isNaN(nombre)) {
+        res.status(401).json({ message: 'campo nombre no debe tener numeros.' });
+    }
 
-if (edad >= 18 ){
-    res.json({ message: '¡Bienvenido!' });
-} else{
-    res.status(401).json({ message: 'Debes ser mayor de 18 años.' });
-}
-});
+    if (edad >= 18 ){
+        res.json({ message: '¡Bienvenido!' });
+    } else{
+        res.status(401).json({ message: 'Debes ser mayor de 18 años.' });
+    }
+    });
 
 
 app.get('/nuevo', (req, res) => {
