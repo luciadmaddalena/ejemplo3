@@ -28,6 +28,23 @@ app.get('/inicio', (req,res) => {
 app.post('/presentacion', (req, res) => {
     const { nombre, apellido, edad, color, fechaNac, terminos } = req.body;
 
+    try {
+        // Llamar a la función de action.js para verificar las credenciales
+        const credencialesValidas = ingresarPresentacion (nombre, apellido, edad, color, fechaNac);
+
+        // Si las credenciales son válidas, responder con un mensaje de bienvenida
+        if (credencialesValidas) {
+            res.json({ message: '¡Datos cargados!' });
+        } else {
+            res.status(401).json({ message: 'Credenciales incorrectas' });
+        }
+    } catch (error) {
+        // Si hubo algún error al leer la base de datos
+        console.error(error);
+        res.status(500).json({ message: 'Error en el servidor' });
+    }
+});
+
 
     //aca vamos a agregar una llamada a la BD
     if (nombre.trim() === "") {
@@ -43,7 +60,7 @@ app.post('/presentacion', (req, res) => {
     } else{
         res.status(401).json({ message: 'Debes ser mayor de 18 años.' });
     }
-    });
+    ;
 
 
 app.get('/nuevo', (req, res) => {

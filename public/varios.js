@@ -21,17 +21,6 @@ function enviarDatos(event) {
     const data = { nombre, apellido, edad, color, fechaNac, terminos };
 console.log(data);
 
-/*
-console.log('Datos enviados correctamente')
-alert('Tu presentacion fue cargada correctamente: ')
-
-}
-function submit(){
-    window.location.href = 'nuevo.html';
-}
-*/
-
-
 //enviar los datos al servidor
     fetch('/presentacion', {
         method: 'POST',

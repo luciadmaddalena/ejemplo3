@@ -14,7 +14,7 @@ function ingresarPresentacion (nombre, apellido, edad, color, fechaNac) {
         });
 
         //
-            db.get('INSERT INTO presentacion (nombre, apellido, edad, color, fechaNac)', (err, row) => {
+            db.get('INSERT INTO presentacion (?, ?, ?, ?, ?)',  [nombre, apellido, edad, color, fechaNac], (err, row) => {
             if (err) {
                 db.close();
                 return reject('Error al consultar la base de datos: ' + err.message);

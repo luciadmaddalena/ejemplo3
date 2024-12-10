@@ -1,0 +1,7 @@
+# Evitar conversiones automáticas de saltos de línea
+* text=auto       # Esto se asegura de que Git reconozca los archivos de texto automáticamente
+*.sh text eol=lf  # Forzar los archivos .sh a usar LF como salto de línea
+*.bat text eol=crlf # Forzar los archivos .bat a usar CRLF como salto de línea
+
+# Si no quieres que Git toque nada de los saltos de línea, usa lo siguiente:
+* -text           # No hacer ninguna conversión de salto de línea para archivos de texto
