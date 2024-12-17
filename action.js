@@ -4,7 +4,7 @@ const path = require('path');
 // Ruta completa a la base de datos SQLite
 const dbPath = 'C:\\desarrollo\\ejemplo3\\BD\\presentacion_db';  // Ruta absoluta a la base de datos SQLite
 
-function ingresarPresentacion (nombre, apellido, edad, color, fechaNac) {
+function ingresarPresentacion(nombre, apellido, edad, color, fechaNac) {
     return new Promise((resolve, reject) => {
         // Conectar a la base de datos SQLite
         const db = new sqlite3.Database(dbPath, (err) => {
@@ -13,20 +13,20 @@ function ingresarPresentacion (nombre, apellido, edad, color, fechaNac) {
             }
         });
 
-        //
-            db.get('INSERT INTO presentacion (?, ?, ?, ?, ?)',  [nombre, apellido, edad, color, fechaNac], (err, row) => {
+        // Crear la consulta SQL de inserción
+        const query = 'INSERT INTO presentacion (nombre, apellido, edad, color, fechaNac) VALUES (?, ?, ?, ?, ?)';
+
+        // Ejecutar la consulta
+        db.run(query, [nombre, apellido, edad, color, fechaNac], function (err) {
             if (err) {
-                db.close();
-                return reject('Error al consultar la base de datos: ' + err.message);
+                db.close();  // Aseguramos cerrar la base de datos en caso de error
+                return reject('Error al insertar en la base de datos: ' + err.message);
             }
 
-            if (row) {
-                resolve(true);
-            } else {
-                resolve(false);
-            }
+            // Si se insertó correctamente, devolvemos true
+            resolve(true);
 
-            // Cerrar la base de datos después de la consulta
+            // Cerrar la base de datos después de la operación
             db.close();
         });
     });
