@@ -2,7 +2,7 @@ const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 
 // Ruta completa a la base de datos SQLite
-const dbPath = 'C:\\desarrollo\\ejemplo3\\BD\\presentacion_db';  // Ruta absoluta a la base de datos SQLite
+const dbPath = 'C:\\desarrollo\\ejemplo3\\BD\\presentacion.bd';  // Ruta absoluta a la base de datos SQLite
 
 function ingresarPresentacion(nombre, apellido, edad, color, fechaNac) {
     return new Promise((resolve, reject) => {
