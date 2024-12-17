@@ -4,6 +4,37 @@ const path = require('path');
 // Ruta completa a la base de datos SQLite
 const dbPath = 'C:\\desarrollo\\ejemplo3\\BD\\presentacion.bd';  // Ruta absoluta a la base de datos SQLite
 
+function crearTabla() {
+    const db = new sqlite3.Database(dbPath, (err) => {
+        if (err) {
+            console.error('Error al conectar a la base de datos: ' + err.message);
+            return;
+        }
+    });
+
+    const query = `
+        CREATE TABLE IF NOT EXISTS presentacion (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            nombre TEXT NOT NULL,
+            apellido TEXT NOT NULL,
+            edad INTEGER NOT NULL,
+            color TEXT,
+            fechaNac TEXT
+        );
+    `;
+
+    db.run(query, (err) => {
+        if (err) {
+            console.error('Error al crear la tabla: ' + err.message);
+        } else {
+            console.log('Tabla "presentacion" creada exitosamente.');
+        }
+        db.close();
+    });
+}
+
+crearTabla();  // Llamada a la función para crear la tabla
+
 function ingresarPresentacion(nombre, apellido, edad, color, fechaNac) {
     return new Promise((resolve, reject) => {
         // Conectar a la base de datos SQLite
