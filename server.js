@@ -15,39 +15,30 @@ app.get('/inicio', (req,res) => {
     res.sendFile(path.join(__dirname,'public','index.html')); // Servir 'logueo.html' desde la carpeta 'public'
 }); 
 
-// manejar la solicitud POST para /presentacion
-app.post('/presentacion', (req, res) => {
-    const { nombre, apellido, edad, color, fechaNac, terminos } = req.body;
-
+// manejar la solicitud POST para /presentaci
+app.post('/presentacion', async (req, res) => {
+    const { nombre, apellido, edad, color, fechaNac } = req.body;
+  
     try {
-        // Llamar a la función de action.js para verificar las credenciales
-        const credencialesValidas = ingresarPresentacion (nombre, apellido, edad, color, fechaNac);
-
-        // Validaciones adicionales
-        if (nombre.trim() === "") {
-            return res.status(401).json({ message: 'Campo nombre está vacío.' });
-        }
-
-        if (!isNaN(nombre)) {
-            return res.status(401).json({ message: 'Campo nombre no debe tener números.' });
-        }
-
-        if (edad < 18) {
-            return res.status(401).json({ message: 'Debes ser mayor de 18 años.' });
-        }
-
-        // Si las credenciales son válidas
-        if (credencialesValidas) {
-            res.json({ message: '¡Datos cargados!' });
-        } else {
-            res.status(401).json({ message: 'Credenciales incorrectas' });
-        }
+      const solicitudGuardada = await ingresarPresentacion(nombre, apellido, edad, color, fechaNac);
+  
+      if (solicitudGuardada) {
+        // Only send the response once
+        return res.json({ message: 'Ok' });
+      } else {
+        // Only send the response once
+        return res.status(401).json({ message: 'Nok' });
+      }
+  
     } catch (error) {
-        // Si hubo algún error al leer la base de datos
-        console.error(error);
-        res.status(500).json({ message: 'Error en el servidor' });
+      console.error(error);
+     
+      if (!res.headersSent) {
+        return res.status(500).json({ message: 'Error en el servidor' });
+      }
     }
-});
+  });
+  
 
 // ruta para el archivo 'nuevo.html'
 app.get('/nuevo', (req, res) => {
